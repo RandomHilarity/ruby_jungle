@@ -3,7 +3,14 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+  <% if cart.length == 0 %>
+    <div class="alert-warning">
+    <p>No items in cart! Empty boxes make our shippers sad.</p>
+    <%= link_to '/', class: 'btn btn-default pull-right' do %>
+      Home &raquo;
+    <% end %>
+  </div>
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -48,5 +55,5 @@
       <% end %>
     </div>
   </div>
-
+  <% end %>
 </section>
