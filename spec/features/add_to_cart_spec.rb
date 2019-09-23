@@ -16,14 +16,15 @@ RSpec.feature "ProductDetails", ype: :feature, js: true do
     end
   end
 
-  scenario "They see the details of one product" do
+  scenario "Can add a product to cart" do
+    
     # ACT
     visit root_path
     find('.product').hover
-    click_link('Details')
+    click_button('Add')
 
     # DEBUG / VERIFY
     save_screenshot
-    expect(page).to have_css 'article.product', count: 1
+    expect(page).to have_content 'My Cart (1)'
   end
 end
