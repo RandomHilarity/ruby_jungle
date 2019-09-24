@@ -5,7 +5,7 @@ RSpec.feature "ProductDetails", ype: :feature, js: true do
   # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
-      1.times do |n|
+      10.times do |n|
       @category.products.create!(
         name:  Faker::Hipster.sentence(3),
         description: Faker::Hipster.paragraph(4),
@@ -19,11 +19,11 @@ RSpec.feature "ProductDetails", ype: :feature, js: true do
   scenario "They see the details of one product" do
     # ACT
     visit root_path
-    find('.product').hover
-    click_link('Details')
+    first('article.product img').click
 
     # DEBUG / VERIFY
+    find('section.products-show')
     save_screenshot
-    expect(page).to have_css 'article.product', count: 1
+    expect(page).to have_css 'section.products-show', count: 1
   end
 end
